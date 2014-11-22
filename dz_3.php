@@ -36,7 +36,7 @@ for($i = 0; $i < $arrlen; $i++){
 	$day[$i]=date('d', $date[$i]);
 }
 sort($day);
-//print_r($days);
+//print_r($day);
 $minday=array_shift($day);
     echo "<p>Наименьшее число: {$minday}</p>\r\n";
 
@@ -46,7 +46,7 @@ for($i = 0; $i < $arrlen; $i++){
 	$month[$i]=date('m', $date[$i]);
 }
 sort($month);
-//print_r($months);
+//print_r($month);
 $maxmon=array_pop($month);
     echo "<p>Наибольший месяц: {$maxmon}</p>\r\n";
     
