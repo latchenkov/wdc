@@ -82,29 +82,19 @@ function discount($diskont) {
 		}
 }
 			
-  // Функция вычисления цены со скидкой
- function price ($price, $discount) {
-		   $price=$price*$discount;
-				return number_format($price, 2, '.','');
+    
+ // Количество товара на складе
+ function instock ($qty, $instock){
+    global $fl_instock; 
+        if ($qty<=$instock){
+            return $qty;
+        }
+        else {
+            $fl_instock=1;
+            return $instock;
+        }
+        
  }
- 
-  // Функция вычисления наличия на складе
- function instock ($qty, $instock) {
-	global $fl_instock;
-		if ($qty <= $instock){
-			return 'На складе';
-		}
-			elseif ($instock==0) {
-				$fl_instock=1;
-					return 'Нет на складе';
-			}	
-				else {
-					$fl_instock=1;
-						return 'На складе '.$instock."<br/>из ".$qty.' заказанных';
-				}
-	
- }
- 
  // Секция СКИДКИ
  $act_name='игрушка детская велосипед'; // наименование акционного товара
  $act_qty=3; // количество товара для акции
@@ -117,9 +107,10 @@ function discount($diskont) {
  // Таблица корзины
  
 echo '<table border="1" >';
-echo '<tr align="center"><td>№</td><td>Наименование<br/>товара</td><td>Скидка</td><td>Цена</td><td>Кол-во<br/>заказано</td><td>Наличие<br/>на складе</td><td>Сумма</td></tr>';
+echo '<tr align="center"><td>№</td><td>Наименование<br/>товара</td><td>Цена<br/>товара</td><td>Скидка</td><td>Цена<br/>со скидкой</td><td>Кол-во<br/>заказано</td><td>Наличие<br/>на складе</td><td>Сумма<br/>фактич.</td></tr>';
 	
 	for($i=0; $i<$count; $i++){
+                $price[$i]=number_format($bd[$name[$i]]['цена'], 2, '.', ''); // цена товара
 		$qty[$i]=$bd[$name[$i]]['количество заказано']; //заказанное количество товара
 		$diskont=$bd[$name[$i]]['diskont']; //купон скидки
 			if($name[$i]==$act_name && $qty[$i] >= $act_qty) { 
@@ -129,16 +120,19 @@ echo '<tr align="center"><td>№</td><td>Наименование<br/>товар
 				$discount_type = 'discount';
 				}
 		$discount_type($diskont); //вычисляется скидка
-			$price[$i]=price($bd[$name[$i]]['цена'], $discount); //вычисляется цена со скидкой
-				$instock=instock ($qty[$i], $bd[$name[$i]]['осталось на складе']); //остаток на складе
-					$summa[$i]=number_format(($price[$i]*$qty[$i]), 2, '.', ''); //стоимость товара
+		$price_discount[$i]=number_format(($price[$i]*$discount), 2, '.',''); //вычисляется цена со скидкой
+		$instock[$i]=instock ($qty[$i], $bd[$name[$i]]['осталось на складе']); // количество товара на складе
+		$summa[$i]=number_format(($price_discount[$i]*$instock[$i]), 2, '.', ''); //стоимость товара
+                
 		echo '<tr align="center">
+                            
 				<td>'.($i+1)."</td>
 					<td>".$name[$i]."</td>
+                                            <td>".$price[$i]."</td>
 						<td>".$discount_scr."</td>
-							<td>".$price[$i]."</td>   
+							<td>".$price_discount[$i]."</td>   
 								<td>".$qty[$i]."</td>
-									<td>".$instock."</td>
+									<td>".$instock[$i]."</td>
 										<td>".$summa[$i]."</td>
 			</tr>";
 	
@@ -149,7 +143,8 @@ echo "</table>\n\r";
 // Секция ИТОГО
 echo '<table>';
 	echo "<tr><td>ИТОГО по заказу:</td><td>- наименований: ".$count."</td></tr>";
-	echo "<tr><td></td><td>- всего единиц товара: ".array_sum($qty)."</td></tr>";
+	echo "<tr><td></td><td>- всего единиц товара заказано: ".array_sum($qty)."</td></tr>";
+        echo "<tr><td></td><td>- всего единиц товара в наличии: ".array_sum($instock)."</td></tr>";
 	echo "<tr><td></td><td>- СУММА к оплате: ".number_format(array_sum($summa), 2, '.','')." руб.</td></tr>";
 echo "</table>\n\r";
 		 
