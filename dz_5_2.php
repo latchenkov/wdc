@@ -49,11 +49,16 @@ function content ($id, $news) {
 
 <?php
 // Был ли передан id новости в качестве параметра?
-// Если параметр не введен в форму или не является численным
-// на страницу ничего не выводится.
-
-if (array_key_exists('id', $_POST) && is_numeric($_POST['id'])){ 
-    
+// Если параметр не введен в форму или не является численным- выводить 404 ошибку
+if ($_POST){ 
+    if(array_key_exists('id', $_POST) && is_numeric($_POST['id'])) {
 		content ($_POST['id'], $news);
 	}
+	else { 
+        header ($_SERVER["SERVER_PROTOCOL"].' 404 Not Found');
+			echo '<h1>Error 404 Not Found</h1>
+                  <p>The requested URL was not found on this server.</p>';
+		exit;
+	}
+}
 	
