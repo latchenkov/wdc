@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/vagrantroot/webroot/public_html/dz_2.php</file>
             <file>file:/C:/vagrantroot/webroot/public_html/dz_3.php</file>
+            <file>file:/C:/vagrantroot/webroot/public_html/.htaccess</file>
             <file>file:/C:/vagrantroot/webroot/public_html/dz_4.php</file>
+            <file>file:/C:/vagrantroot/webroot/public_html/dz_5_1.php</file>
         </group>
     </open-files>
 </project-private>
