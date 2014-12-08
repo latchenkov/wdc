@@ -72,7 +72,7 @@ if (isset($_SESSION['show'])){
 	$editAd=$_SESSION['bd'][$edit_id];
 		unset($_SESSION['show']);
 }
-//print_r($_SESSION);
+print_r($_SESSION);
 ?>
 <form  method="post"  >
     <table>
