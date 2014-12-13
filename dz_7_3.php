@@ -22,6 +22,7 @@ if (file_exists(ADS_DB)){
 	$ini_string = file_get_contents(ADS_DB);
 		if (!$ini_string) { exit('Ошибка чтения файла'); }
     $ads_db = unserialize($ini_string);
+    if (!$ads_db) { exit('Неверный формат файла'); }
 }
 
 
