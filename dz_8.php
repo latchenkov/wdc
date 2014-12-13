@@ -18,7 +18,7 @@ $smarty->config_dir = $smarty_dir.'configs';
 
 
 session_start();
-require ($project_root.'/functions.php'); // Подключаем файл с функциями
+require ('functions.php'); // Подключаем файл с функциями
 
 define('ADS_DB', 'ads_db.txt');
 
