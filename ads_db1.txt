@@ -1,0 +1,94 @@
+[0] 
+date = 08.12.2014 12:43:21;
+private = 1;
+seller_name = Сергей;
+email = ira@mail.ru;
+allow_mails = 1;
+phone = 89104301813;
+location_id = 641780;
+category_id = 109;
+title = Продаю суперкар;
+description = hgfjh;
+price = 547;
+[1] 
+date = 08.12.2014 12:48:45;
+private = 0;
+seller_name = иван;
+email = ira@mail.ru;
+phone = 89104301813;
+location_id = 641630;
+category_id = 14;
+title = Гараж куплю;
+description = vkjhvhk;
+price = 678;
+allow_mails = 1;
+[2] 
+date = 08.12.2014 12:49:24;
+private = 0;
+seller_name = Ирина;
+email = 123@mail.ru;
+phone = 89104301810;
+location_id = 641490;
+category_id = 42;
+title = Гараж куплю;
+description = cfjcfgj;
+price = 3450;
+[5] 
+date = 08.12.2014 14:49:49;
+private = 0;
+seller_name = Елена;
+email = 123@mail.ru;
+phone = 89104301810;
+location_id = 641630;
+category_id = 10;
+title = Продаю гидроцикл;
+description = fshd;
+price = 56670;
+[8] 
+date = 08.12.2014 16:03:46;
+private = 0;
+seller_name = Ирина;
+email = ira@mail.ru;
+phone = 89104301810;
+location_id = 641680;
+category_id = 111;
+title = Продаю суперкар;
+description = ,jkhgj;
+price = 67889;
+allow_mails = 1;
+[10] 
+date = 08.12.2014 16:06:51;
+private = 1;
+seller_name = иван;
+email = 123@mail.ru;
+allow_mails = 1;
+phone = 89104301813;
+location_id = 641790;
+category_id = 32;
+title = Продаю гидроцикл;
+description = jgchj;
+price = 455489;
+[11] 
+date = 08.12.2014 16:09:47;
+private = 0;
+seller_name = Ирина;
+email = 123@mail.ru;
+allow_mails = 1;
+phone = 89104301813;
+location_id = 641760;
+category_id = 25;
+title = Продаю суперкар;
+description = ghkghk;
+price = 455489;
+[12] 
+date = 08.12.2014 21:23:51;
+private = 1;
+seller_name = Илья;
+email = latchenkov@gmail.com;
+allow_mails = 1;
+phone = 8-499-748-45-98;
+location_id = 641710;
+category_id = 25;
+title = Авто продам;
+description = huihg;
+price = 46;
