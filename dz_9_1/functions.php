@@ -1,11 +1,11 @@
 <?php
 
 // показ всех объявлений
-function showAll($link){
+function showAll(){
     $query = "SELECT id, date, title, price, seller_name FROM ads ORDER BY id";
-    $res = mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
+    $res = mysql_query($query) or die ('Запрос не удался:'.mysql_error());
     $data = array();
-    while($row = mysqli_fetch_assoc($res)){
+    while($row = mysql_fetch_assoc($res)){
         //$row['date'] = strtotime($row['date'])+3600*3;
 	$data[] = $row;
         
@@ -14,15 +14,15 @@ return $data;
 }
 
 // добавление объявления
-function newAd($link, $new_ad){
+function newAd($new_ad){
     $query = "INSERT INTO ads (date, title, price, seller_name, private, email, allow_mails, phone, location_id, category_id, description)
               VALUES (now(), '$new_ad[title]', $new_ad[price], '$new_ad[seller_name]', $new_ad[private], '$new_ad[email]', $new_ad[allow_mails], '$new_ad[phone]', $new_ad[location_id], $new_ad[category_id], '$new_ad[description]')";
-    mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
+    mysql_query($query) or die ('Запрос не удался:'.mysql_error());
 }
 
 
 // редактирование объявления
-function updateAd ($link, $update_ad, $id){
+function updateAd ($update_ad, $id){
     $query = "UPDATE ads SET
                 title = '$update_ad[title]',
                 price = '$update_ad[price]',
@@ -35,51 +35,54 @@ function updateAd ($link, $update_ad, $id){
                 category_id = $update_ad[category_id],
                 description = '$update_ad[description]'
             WHERE id = $id";
-    mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
+    mysql_query($query) or die ('Запрос не удался:'.mysql_error());
 }
 
 // показ конкрентного объявления
-function showAd($link, $id){
+function showAd($id){
     $query = "SELECT * FROM ads WHERE id = $id";
-    $res = mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
-	$row = mysqli_fetch_assoc($res);
+    $res = mysql_query($query) or die ('Запрос не удался:'.mysql_error());
+	$row = mysql_fetch_assoc($res);
 	return $row;
 }
 // удаление объявления
-function delAd($link, $id){
+function delAd($id){
 	$query = "DELETE FROM ads WHERE id = $id";
-	mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
+	mysql_query($query) or die ('Запрос не удался:'.mysql_error());
 }
 
 // список городов
-function location_id($link){
+function location_id(){
     $query = "SELECT id, location FROM locations ORDER BY location";
-    $res = mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
+    $res = mysql_query($query) or die ('Запрос не удался:'.mysql_error());
     $data = array();
-    while($row = mysqli_fetch_assoc($res)){
+    while($row = mysql_fetch_assoc($res)){
         $data[$row['id']]=$row['location'];
     }
 return $data;
 }
 
 // список подкатегорий
-function label_id($link){
-    $query = "SELECT id, category FROM categorys WHERE parent_id IS NULL";
-    $res = mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
+function label_id(){
+    $query = "SELECT id, label FROM labels";
+    $res = mysql_query($query) or die ('Запрос не удался:'.mysql_error());
     $data = array();
-    while($row = mysqli_fetch_assoc($res)){
-        $data[$row['id']]=$row['category'];
+    while($row = mysql_fetch_assoc($res)){
+        $data[$row['id']]=$row['label'];
     }
 return $data;
 }
 
 // список категорий
-function category_id($link){
-    $query = "SELECT id, category, parent_id FROM categorys WHERE parent_id IS NOT NULL";
-    $res = mysqli_query( $link, $query) or die ('Запрос не удался:'.mysqli_error($link));
+function category_id(){
+    $query = "SELECT id, label, category FROM categorys ";
+    $res = mysql_query($query) or die ('Запрос не удался:'.mysql_error());
     $data = array();
-    while($row = mysqli_fetch_assoc($res)){
-        $data[$row['parent_id']][$row['id']]=$row['category'];
+    while($row = mysql_fetch_assoc($res)){
+        $data[$row['label']][$row['id']]=$row['category'];
     }
 return $data;
 }
+
+
+

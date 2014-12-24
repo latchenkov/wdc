@@ -1,5 +1,7 @@
 <?php
+error_reporting (E_ALL & ~E_DEPRECATED);
 header("Content-type: text/html; Charset=utf-8");
+
 
 $project_root=$_SERVER['DOCUMENT_ROOT'];
 $smarty_dir=$project_root.'/dz_9/smarty/';
@@ -20,6 +22,9 @@ require_once ('connection.php'); // Подключаем БД
 
 require ('functions.php'); // Подключаем файл с функциями
 
+
+
+
 // Переносим данные из $_POST в БД
 if (isset($_POST['main_form_submit'])) { // если была нажата кнопка
     $submit=$_POST['main_form_submit'];
@@ -37,11 +42,11 @@ if (isset($_POST['main_form_submit'])) { // если была нажата кн�
         }
     switch ($submit) { // выбор режима добавления или редактирования объявления
 	case 'Подать объявление' :
-            newAd($link, $post_ad);
+            newAd($post_ad);
         break;
 	case 'Сохранить изменения' :
             $id = (int)$_GET['edit']; // номер редактируемого объявления
-            updateAd($link, $post_ad, $id);
+            updateAd($post_ad, $id);
         break;
     }
 header("Location: dz_9.php");
@@ -51,7 +56,7 @@ exit;
 // Удаление объявления
 if (isset($_GET['delete'])) {
 	$del_id=(int)$_GET['delete'];
-    delAd($link, $del_id);
+    delAd($del_id);
     header("Location: dz_9.php");
 exit;
 }		
@@ -59,18 +64,18 @@ exit;
 // Вывод объявления
 if (isset($_GET['show'])){
     $edit_id=(int)$_GET['show'];
-    $editAd = showAd($link, $edit_id);
+    $editAd = showAd($edit_id);
     $smarty->assign('editAd', $editAd);
 }
 
 $smarty->assign('location_sel', 641780); // Выбранный город по умолчанию
-$smarty->assign('location_id', location_id($link));
-$smarty->assign('category_id', category_id($link));
-$smarty->assign('label_id', label_id($link));
+$smarty->assign('location_id', location_id());
+$smarty->assign('category_id', category_id());
+$smarty->assign('label_id', label_id());
 $smarty->assign('radio_id', array ( 0 => 'Частное лицо', 1 => 'Компания'));
 
 // Показ списка объявлений
-$ads_db = showAll($link);
+$ads_db = showAll();
 //date_default_timezone_set('Europe/Moscow');
 if (isset ($ads_db)) {
     $smarty->assign('showAd', $ads_db);
