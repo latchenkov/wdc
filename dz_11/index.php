@@ -2,14 +2,11 @@
 header("Content-type: text/html; Charset=utf-8");
 
 require_once ('config.php');
-require_once ('connection.php'); // Подключаем БД
+require_once ($project_root.'/lib/connection.php'); // Подключаем БД
 
-require ('functions.php'); // Подключаем файл с функциями
+require ($project_root.'/lib/ads_class.php'); // Подключаем файл с функциями
 
-//Ads::showAll($db);
-//exit;
-
-// Переносим данные из $_POST в БД
+// Создаем либо редактируем объявление
 if (isset($_POST['main_form_submit'])) { // если была нажата кнопка
     $submit=$_POST['main_form_submit'];
 	unset ($_POST['main_form_submit']);
@@ -35,7 +32,7 @@ if (isset($_GET['delete'])) {
 exit;
 }		
 
-// Вывод объявления
+// Показ конкретного объявления
 if (isset($_GET['show'])){
     $edit_id=(int)$_GET['show'];
     $editAd = Ad::showAd($db, $edit_id);

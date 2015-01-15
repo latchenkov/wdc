@@ -1,8 +1,10 @@
 <?php
-if (!file_exists('setting.php')){
+$file_setting=$project_root."/lib/setting.php";
+
+if (!file_exists($file_setting)){
     connectError();
 }
-require_once ('setting.php');
+require_once ($file_setting);
 
 if (defined('DB_USER') && defined('DB_PASS') && defined('DB_HOST') && defined('DB_NAME')){
     // Подключаемся к БД.

@@ -35,7 +35,7 @@ class Ads {
         return $this->seller_name;
     }
     // показ всех объявлений
-    public static function showAll(DbSimple_Mysqli $db){
+    public static function showAll(DbSimple_Database $db){
         $data = $db->select("SELECT id, date, title, price, seller_name FROM ads ORDER BY id");
         if (empty($data)){return null;}
         $allAds = array();
@@ -89,23 +89,23 @@ class Ad extends Ads {
     }
 
     // добавление объявления
-    public static function newAd(DbSimple_Mysqli $db, $new_ad){
+    public static function newAd(DbSimple_Database $db, $new_ad){
         $db->query ("INSERT INTO ads (date, ?#) VALUES (now(), ?a)", array_keys($new_ad), array_values($new_ad));
     }
 
     // редактирование объявления
-    public static function updateAd (DbSimple_Mysqli $db, array $update_ad, $id){
+    public static function updateAd (DbSimple_Database $db, array $update_ad, $id){
         $db->query("UPDATE ads SET ?a WHERE id = ?d", $update_ad, $id);
     }
 
     // показ конкрентного объявления
-    public static function showAd(DbSimple_Mysqli $db, $id){
+    public static function showAd(DbSimple_Database $db, $id){
         $row = $db->selectRow("SELECT * FROM ads WHERE id = ?d", $id);
             return new Ad($row);
     }
     
     // удаление объявления
-    public static function delAd(DbSimple_Mysqli $db, $id){
+    public static function delAd(DbSimple_Database $db, $id){
         $db-> query("DELETE FROM ads WHERE id = ?d", $id);
     }
 }
@@ -129,19 +129,19 @@ class ServiceFunction {
     }
 
     // список городов
-    public static function location_id(DbSimple_Mysqli $db){
+    public static function location_id(DbSimple_Database $db){
         $data=$db->selectCol("SELECT id AS ARRAY_KEY , location FROM locations ORDER BY location");
     return $data;
     }
 
     // список подкатегорий
-    public static function label_id(DbSimple_Mysqli $db){
+    public static function label_id(DbSimple_Database $db){
         $data=$db->selectCol("SELECT id AS ARRAY_KEY, category FROM categorys WHERE parent_id IS NULL");
     return $data;
     }
 
     // список категорий
-    public static function category_id(DbSimple_Mysqli $db){
+    public static function category_id(DbSimple_Database $db){
         $res = $db->select("SELECT  id , parent_id ,  category  FROM categorys WHERE parent_id IS NOT NULL");
         $data = array();
             foreach ($res as $v){
