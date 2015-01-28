@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/vagrantroot/webroot/public_html/dz_11/index.php</file>
-            <file>file:/C:/vagrantroot/webroot/public_html/dz_11/install.php</file>
-            <file>file:/C:/vagrantroot/webroot/public_html/dz_11/functions.php</file>
-            <file>file:/C:/vagrantroot/webroot/public_html/dz_11/config.php</file>
-            <file>file:/C:/vagrantroot/webroot/public_html/dz_11/connection.php</file>
-            <file>file:/C:/vagrantroot/webroot/public_html/dz_11/архитектура.php</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/smarty/templates/table_row_private.tpl</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/db_backups/test.sql</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/lib/connection.php</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/smarty/templates/table_row_corporate.tpl</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/smarty/templates/header.tpl</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12_anton/files/dz12.php</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/config.php</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/smarty/templates/table.tpl</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/smarty/templates/install.tpl</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/smarty/templates/index.tpl</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/index.php</file>
+            <file>file:/C:/VagrantRoot/webroot/public_html/dz_12/lib/ads_class.php</file>
         </group>
     </open-files>
 </project-private>
