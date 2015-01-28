@@ -10,7 +10,9 @@ require ($project_root.'/lib/ads_class.php'); // Подключаем файл �
 if (isset($_POST['main_form_submit'])) { // если была нажата кнопка
     $submit=$_POST['main_form_submit'];
 	unset ($_POST['main_form_submit']);
+        
     $post_ad = ServiceFunction::trimPOST($_POST);
+    
         switch ($submit) { // выбор режима добавления или редактирования объявления
             case 'Подать объявление' :
                 Ad::newAd($db, $post_ad);
