@@ -55,7 +55,7 @@ class installDataBase {
     public function putDumpDB(DbSimple_Database $db, array $query) {// Выполняем запросы из дампа БД
         foreach ($query as $v){
             if (!empty($v)){
-                $db->query("{$v}");
+                $db->query($v);
             }
         }
     }

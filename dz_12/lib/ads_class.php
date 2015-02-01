@@ -90,10 +90,54 @@ class Ads {
 }
 
 class privateAds extends Ads {
+    protected $type = 0;
+            
+        public function __construct(array $ad) {
+            if(isset($ad['id'])){
+              $this->id=$ad['id'];
+            }
+            if(isset($ad['date'])){
+                $this->date=$ad['date'];
+            }
+            else {
+            $this->date = date('YmdHis');
+            }
+            $this->title = $ad['title'];
+            $this->price = $ad['price'];
+            $this->seller_name = $ad['seller_name'];
+            $this->description = $ad['description'];
+            $this->email = $ad['email'];
+            $this->phone = $ad['phone'];
+            $this->allow_mails = $ad['allow_mails'];
+            $this->location_id = $ad['location_id'];
+            $this->category_id = $ad['category_id'];
+        }
     
 }
 
 class corporateAds extends Ads {
+    protected $type = 1;
+            
+        public function __construct(array $ad) {
+            if(isset($ad['id'])){
+              $this->id=$ad['id'];
+            }
+            if(isset($ad['date'])){
+                $this->date=$ad['date'];
+            }
+            else {
+            $this->date = date('YmdHis');
+            }
+            $this->title = $ad['title'];
+            $this->price = $ad['price'];
+            $this->seller_name = $ad['seller_name'];
+            $this->description = $ad['description'];
+            $this->email = $ad['email'];
+            $this->phone = $ad['phone'];
+            $this->allow_mails = $ad['allow_mails'];
+            $this->location_id = $ad['location_id'];
+            $this->category_id = $ad['category_id'];
+        }
     
 } 
 

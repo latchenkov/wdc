@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.28, created on 2015-01-27 11:46:50
+<?php /* Smarty version 2.6.28, created on 2015-02-01 15:26:59
          compiled from table.tpl */ ?>
 <h2 class="sub-header" >Все объявления</h2>
-    <div class="table-responsive" >
+    <div class="table-responsive" style="height: 600px; overflow:auto; ">
         <table class="table">
-            <thead>
+           <thead>
                 <tr>
                     <th>Дата публикации</th>
                     <th>Название</th>
@@ -13,7 +13,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                    <?php echo $this->_tpl_vars['ads_rows']; ?>
 
             </tbody>
