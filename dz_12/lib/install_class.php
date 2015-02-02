@@ -45,7 +45,7 @@ class installDataBase {
                     }
                 }
         $query = explode(';', implode ($file));
-        return $query;
+        return $query; 
         }
         else {
             installErrorHandler();

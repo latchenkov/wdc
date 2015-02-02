@@ -19,8 +19,6 @@ exit;
 if (isset($_GET['delete'])) {
     $del_id=(int)$_GET['delete'];
         Ads::delAdFromDb($del_id);
-//header("Location: index.php");
-//exit;
 }
 
 $instance = AdsStore::getInstance();

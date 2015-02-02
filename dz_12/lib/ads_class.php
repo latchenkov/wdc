@@ -51,7 +51,7 @@ class Ads {
                 $data[$key] = trim((int)$value);
             }
             else{
-                $data[$key] = trim(htmlspecialchars($value));    
+                $data[$key] = trim(strip_tags($value));    
             }
         }
         return $data;
@@ -180,7 +180,7 @@ class AdsStore{
         global $smarty;
         $ad = $this->ads[$id];
         foreach ($ad->getObjectParam() as $key => $val){
-            $smarty->assign($key, $val);
+            $smarty->assign($key, htmlspecialchars($val));
         }    
     }
     

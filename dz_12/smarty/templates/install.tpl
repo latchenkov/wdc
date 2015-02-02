@@ -1,6 +1,6 @@
 {include file='header.tpl'}
 
-<div class="container" style="width:600px; padding: 30px;" >
+<div class="container" style="width:600px; margin-top: 150px;" >
 <form class="form-horizontal"  method="post" >
     
     <div class="form-group">

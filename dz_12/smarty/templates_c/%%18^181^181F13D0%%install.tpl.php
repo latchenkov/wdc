@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-01-27 15:33:16
+<?php /* Smarty version 2.6.28, created on 2015-02-02 11:50:24
          compiled from install.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'install.tpl', 39, false),)), $this); ?>
@@ -8,7 +8,7 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-<div class="container" style="width:600px; padding: 30px;" >
+<div class="container" style="width:600px; margin-top: 150px;" >
 <form class="form-horizontal"  method="post" >
     
     <div class="form-group">
