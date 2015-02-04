@@ -89,54 +89,20 @@ class Ads {
 
 }
 
-class privateAds extends Ads {
-    protected $type = 0;
-            
+class privateAd extends Ads {
+               
         public function __construct(array $ad) {
-            if(isset($ad['id'])){
-              $this->id=$ad['id'];
-            }
-            if(isset($ad['date'])){
-                $this->date=$ad['date'];
-            }
-            else {
-            $this->date = date('YmdHis');
-            }
-            $this->title = $ad['title'];
-            $this->price = $ad['price'];
-            $this->seller_name = $ad['seller_name'];
-            $this->description = $ad['description'];
-            $this->email = $ad['email'];
-            $this->phone = $ad['phone'];
-            $this->allow_mails = $ad['allow_mails'];
-            $this->location_id = $ad['location_id'];
-            $this->category_id = $ad['category_id'];
+            parent::__construct($ad);
+                $this->type = 0;
         }
     
 }
 
-class corporateAds extends Ads {
-    protected $type = 1;
-            
+class corporateAd extends Ads {
+               
         public function __construct(array $ad) {
-            if(isset($ad['id'])){
-              $this->id=$ad['id'];
-            }
-            if(isset($ad['date'])){
-                $this->date=$ad['date'];
-            }
-            else {
-            $this->date = date('YmdHis');
-            }
-            $this->title = $ad['title'];
-            $this->price = $ad['price'];
-            $this->seller_name = $ad['seller_name'];
-            $this->description = $ad['description'];
-            $this->email = $ad['email'];
-            $this->phone = $ad['phone'];
-            $this->allow_mails = $ad['allow_mails'];
-            $this->location_id = $ad['location_id'];
-            $this->category_id = $ad['category_id'];
+            parent::__construct($ad);
+                $this->type = 1;
         }
     
 } 
@@ -165,10 +131,10 @@ class AdsStore{
         foreach ($all as $value){
             switch ($value['type']) {
                 case 0 : // Частное объявление
-                    $ad = new privateAds($value);
+                    $ad = new privateAd($value);
                 break;
                 case 1 : // Объявление компании
-                    $ad = new corporateAds($value);
+                    $ad = new corporateAd($value);
                 break;
             }
         self::addAds($ad); //помещаем объекты в хранилище
@@ -189,10 +155,10 @@ class AdsStore{
         $row='';
         foreach ($this->ads as $value) {
             $smarty->assign('ad',$value);
-                if ($value instanceof privateAds){
+                if ($value instanceof privateAd){
                     $row.=$smarty->fetch('table_row_private.tpl');
                 }
-                elseif ($value instanceof corporateAds) {
+                elseif ($value instanceof corporateAd) {
                     $row.=$smarty->fetch('table_row_corporate.tpl');
                 }
         }
