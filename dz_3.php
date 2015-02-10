@@ -61,3 +61,11 @@ date_default_timezone_set('America/New_York');
     echo "<p>Часовой пояс изменен</p>\r\n";
     echo date_default_timezone_get()."<br/>\r\n";
     echo date('d.m.Y H:i:s', $selected);
+    
+    
+    // Выставляем часовой пояс JS
+
+var options = { timeZone: "America/New_York", timeZoneName: 'short'};
+//date_default_timezone_set('America/New_York');
+console.log ('Часовой пояс изменен');
+console.log( selected.toLocaleString('ru-RU', options));
