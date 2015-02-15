@@ -78,20 +78,23 @@ MY_CITY_1 = 'Санкт-Петербург';
 
 	// Задание 3
 	
-// Т.к. ассоциативных массивов в Javascript нет, воспользуемся объектом Object
-var book = {'title' : '"Один хороший трейд"', 'author' : 'Майк Беллафиоре', 'pages' : 480 };
+
+var book = [];
+    book['title'] = '"Один хороший трейд"';
+    book['author'] = 'Майк Беллафиоре';
+    book['pages'] = 480;
     console.log ( 'Недавно я прочитал книгу ' + book['title'] + ', написанную автором ' + book['author']);
     console.log ('Я осилил все ' + book['pages'] + ' страниц, мне она очень понравилась.');
 
 	
 	// Задание 4
 	
-var book1 = new Object();
+var book1 = new Array();
     book1['title'] = '"СОКОЛ и ЛАСТОЧКА"';
     book1['author'] = 'Борис Акунин';
     book1['pages'] = 620;
 	
-var book2 = new Object();
+var book2 = new Array();
     book2['title'] = '"Копи царя Соломона"';
     book2['author'] = 'Генри Хаггард';
     book2['pages'] = 350;
